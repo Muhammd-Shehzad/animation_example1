@@ -3,16 +3,25 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 void main() {
-  runApp(
-    ScreenUtilInit(
-      designSize: Size(360, 690),
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return ScreenUtilInit(
+      designSize: Size(360, 690), // Set according to your design (e.g. Figma)
       minTextAdapt: true,
       splitScreenMode: true,
-      builder:
-          (context, child) => MaterialApp(
-            debugShowCheckedModeBanner: false,
-            home: AnimationExample1(),
-          ),
-    ),
-  );
+      builder: (context, child) {
+        return MaterialApp(
+          debugShowCheckedModeBanner: false,
+
+          home: AnimationExample1(),
+        );
+      },
+    );
+  }
 }

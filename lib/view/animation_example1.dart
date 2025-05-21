@@ -22,7 +22,11 @@ class _AnimationExample1State extends State<AnimationExample1>
       duration: Duration(seconds: 2),
     );
     super.initState();
-    _animation = Tween(begin: 0.0, end: 2 * pi).animate(_controller);
+    _animation = Tween<double>(
+      begin: 0.0,
+      end: 2 * pi,
+    ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeInCubic));
+    _controller.repeat();
   }
 
   @override
@@ -35,20 +39,19 @@ class _AnimationExample1State extends State<AnimationExample1>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('Animation Example 1'), centerTitle: true),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Center(
-            child: Container(
-              height: 200.h,
-              width: 200.w,
-              decoration: BoxDecoration(
-                color: Colors.blueAccent,
-                borderRadius: BorderRadius.circular(20.r),
+      body: Center(
+        child: AnimatedBuilder(
+          animation: _animation,
+          builder:
+              (context, child) => Transform(
+                alignment: Alignment.center,
+                transform: Matrix4.identity()..rotateY(_animation.value),
+                child: CircleAvatar(
+                  radius: 100.r,
+                  backgroundColor: Colors.blue,
+                ),
               ),
-            ),
-          ),
-        ],
+        ),
       ),
     );
   }
