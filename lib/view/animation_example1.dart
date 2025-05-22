@@ -2,6 +2,7 @@ import 'dart:math' show pi;
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
 
 class AnimationExample1 extends StatefulWidget {
   const AnimationExample1({super.key});
@@ -46,9 +47,12 @@ class _AnimationExample1State extends State<AnimationExample1>
               (context, child) => Transform(
                 alignment: Alignment.center,
                 transform: Matrix4.identity()..rotateY(_animation.value),
-                child: CircleAvatar(
-                  radius: 100.r,
-                  backgroundColor: Colors.blue,
+                child: InkWell(
+                  onTap: () {},
+                  child: CircleAvatar(
+                    radius: 100.r,
+                    backgroundColor: Colors.blue,
+                  ),
                 ),
               ),
         ),
