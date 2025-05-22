@@ -46,13 +46,18 @@ class _AnimationExample1State extends State<AnimationExample1>
           builder:
               (context, child) => Transform(
                 alignment: Alignment.center,
-                transform: Matrix4.identity()..rotateY(_animation.value),
+                transform: Matrix4.identity()..rotateZ(_animation.value),
                 child: InkWell(
                   onTap: () {},
-                  child: CircleAvatar(
-                    radius: 100.r,
-                    backgroundColor: Colors.blue,
+                  child: Container(
+                    height: 100.h,
+                    width: 100.w,
+                    decoration: BoxDecoration(color: Colors.green),
                   ),
+                  // child: CircleAvatar(
+                  //   radius: 100.r,
+                  //   backgroundColor: Colors.blue,
+                  // ),
                 ),
               ),
         ),
